@@ -19,27 +19,62 @@ import java.util.Map;
 @RequestMapping("/login")
 public class LoginController {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    Logger logger = LoggerFactory.getLogger(LoginController.class);
+
 
     @Autowired
     private LoginService loginService;
 
-    /**
-     * 进行登录验证
-     * @param map
-     * @return
-     */
-    @RequestMapping(value = "/validation", method = RequestMethod.POST)
+    @RequestMapping(value = "/adminValidation",method = RequestMethod.POST)
     @ResponseBody
-    private Map<String,Object> validation(@RequestBody  Map map){
+    private Map<String,Object> adminValidation(@RequestBody Map map){
+
+        logger.info("info from front: " + map);
+
         Map<String,Object> modelMap = new HashMap<>();
-        System.out.println("role: " + map.get("role"));
+
+        JSONObject object = JSONObject.fromObject(map.get("adminLogin"));
+        Login token = (Login) JSONObject.toBean(object, Login.class);
+        //进行验证
+        modelMap = loginService.adminValidation(token);
+
+        return modelMap;
+    }
+
+    @RequestMapping(value = "/validation",method = RequestMethod.POST)
+    @ResponseBody
+    private Map<String,Object> validation(@RequestBody Map map){
+
+        logger.info("info from front: " + map);
+
+        Map<String,Object> modelMap = new HashMap<>();
+
         JSONObject object = JSONObject.fromObject(map.get("Login"));
-        Login token = (Login) JSONObject.toBean(object,Login.class);
-        modelMap = loginService.validate(token, (int)map.get("role"));
-        logger.info("登录凭证 log4j  : " + token);
+        Login token = (Login) JSONObject.toBean(object, Login.class);
+
+        //获取用户的登录类型
+        int role = (int) map.get("role");
+        //进行验证
+        modelMap = loginService.validation(role,token);
+
         return modelMap;
     }
 
 
+    @RequestMapping(value = "/changePassword",method = RequestMethod.POST)
+    @ResponseBody
+    private Map<String,Object> changePassword(@RequestBody Map map){
+        Map<String,Object> modelMap = new HashMap<>();
+
+        String oldPassword = (String) map.get("oldPassword");
+        String newPassword = (String) map.get("newPassword");
+
+        try {
+            modelMap = loginService.updateAdminPassword(oldPassword,newPassword);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return modelMap;
+    }
 }

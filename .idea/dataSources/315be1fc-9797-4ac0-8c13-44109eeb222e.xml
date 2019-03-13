@@ -933,371 +933,422 @@
     <table id="238" parent="7" name="tb_repairs_people"/>
     <table id="239" parent="7" name="tb_repairs_table"/>
     <table id="240" parent="7" name="tb_student"/>
-    <table id="241" parent="7" name="tb_teacher"/>
-    <column id="242" parent="233" name="id">
+    <table id="241" parent="7" name="tb_system_notice"/>
+    <table id="242" parent="7" name="tb_teacher"/>
+    <column id="243" parent="233" name="id">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="233" name="username">
+    <column id="244" parent="233" name="username">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="233" name="balance">
+    <column id="245" parent="233" name="balance">
       <Position>3</Position>
       <DataType>int(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="245" parent="233" name="PRIMARY">
+    <key id="246" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="246" parent="234" name="id">
+    <column id="247" parent="234" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="234" name="isbn">
+    <column id="248" parent="234" name="isbn">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="234" name="book_name">
+    <column id="249" parent="234" name="book_name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="234" name="price">
+    <column id="250" parent="234" name="price">
       <Position>4</Position>
       <DataType>float|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="250" parent="234" name="book_isbn_uindex">
+    <index id="251" parent="234" name="book_isbn_uindex">
       <ColNames>isbn</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="251" parent="234" name="PRIMARY">
+    <key id="252" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="252" parent="234" name="book_isbn_uindex">
+    <key id="253" parent="234" name="book_isbn_uindex">
       <ColNames>isbn</ColNames>
       <UnderlyingIndexName>book_isbn_uindex</UnderlyingIndexName>
     </key>
-    <column id="253" parent="235" name="id">
+    <column id="254" parent="235" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="235" name="isbn">
+    <column id="255" parent="235" name="isbn">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="235" name="stock">
+    <column id="256" parent="235" name="stock">
       <Position>3</Position>
       <DataType>int(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="256" parent="235" name="PRIMARY">
+    <key id="257" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="257" parent="236" name="id">
+    <column id="258" parent="236" name="id">
       <Position>1</Position>
       <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="236" name="username">
+    <column id="259" parent="236" name="username">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="236" name="password">
+    <column id="260" parent="236" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="260" parent="236" name="tb_login_username_uindex">
+    <index id="261" parent="236" name="tb_login_username_uindex">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="261" parent="236" name="PRIMARY">
+    <key id="262" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="262" parent="236" name="tb_login_username_uindex">
+    <key id="263" parent="236" name="tb_login_username_uindex">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>tb_login_username_uindex</UnderlyingIndexName>
     </key>
-    <column id="263" parent="237" name="id">
+    <column id="264" parent="237" name="id">
       <Position>1</Position>
       <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="237" name="login_id">
+    <column id="265" parent="237" name="login_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="237" name="name">
+    <column id="266" parent="237" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="266" parent="237" name="number">
+    <column id="267" parent="237" name="number">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="267" parent="237" name="tb_manager_tb_login_id_fk">
+    <index id="268" parent="237" name="tb_manager_tb_login_id_fk">
       <ColNames>login_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="268" parent="237" name="PRIMARY">
+    <key id="269" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="269" parent="237" name="tb_manager_tb_login_id_fk">
+    <foreign-key id="270" parent="237" name="tb_manager_tb_login_id_fk">
       <ColNames>login_id</ColNames>
       <RefSchemaName>repairs</RefSchemaName>
       <RefTableName>tb_login</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="270" parent="238" name="id">
+    <column id="271" parent="238" name="id">
       <Position>1</Position>
       <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="238" name="login_id">
+    <column id="272" parent="238" name="login_id">
       <Position>2</Position>
       <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="238" name="name">
+    <column id="273" parent="238" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="238" name="number">
+    <column id="274" parent="238" name="number">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="274" parent="238" name="address">
+    <column id="275" parent="238" name="address">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="275" parent="238" name="phone">
+    <column id="276" parent="238" name="phone">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="276" parent="238" name="tb_repairs_people_number_uindex">
+    <index id="277" parent="238" name="tb_repairs_people_number_uindex">
       <ColNames>number</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="277" parent="238" name="tb_repairs_people_tb_login_id_fk">
+    <index id="278" parent="238" name="tb_repairs_people_tb_login_id_fk">
       <ColNames>login_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="278" parent="238" name="PRIMARY">
+    <key id="279" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="279" parent="238" name="tb_repairs_people_number_uindex">
+    <key id="280" parent="238" name="tb_repairs_people_number_uindex">
       <ColNames>number</ColNames>
       <UnderlyingIndexName>tb_repairs_people_number_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="280" parent="238" name="tb_repairs_people_tb_login_id_fk">
+    <foreign-key id="281" parent="238" name="tb_repairs_people_tb_login_id_fk">
       <ColNames>login_id</ColNames>
       <RefSchemaName>repairs</RefSchemaName>
       <RefTableName>tb_login</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="281" parent="239" name="id">
+    <column id="282" parent="239" name="id">
       <Position>1</Position>
       <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="239" name="repair_desc">
+    <column id="283" parent="239" name="repair_desc">
       <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="284" parent="239" name="submit_number">
+      <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="239" name="submit_number">
-      <Position>3</Position>
-      <DataType>int(5)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="284" parent="239" name="repair_number">
+    <column id="285" parent="239" name="repair_number">
       <Position>4</Position>
-      <DataType>int(255)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="285" parent="239" name="status">
+    <column id="286" parent="239" name="status">
       <Position>5</Position>
-      <Comment>0 没有人接单  1 已经接单</Comment>
+      <Comment>0 未接单1 刚接单 2 维修中  3 维修完成  4 待评价</Comment>
       <DataType>int(2)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="286" parent="239" name="repair_status">
+    <column id="287" parent="239" name="repair_status">
       <Position>6</Position>
-      <Comment>0 维修中 1 维修完成</Comment>
+      <Comment>0 刚接单 1 维修中  2 维修完成  3 待评价</Comment>
       <DataType>int(2)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="287" parent="239" name="assessment">
+    <column id="288" parent="239" name="assessment">
       <Position>7</Position>
       <Comment>评价值</Comment>
       <DataType>int(5)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="288" parent="239" name="PRIMARY">
+    <column id="289" parent="239" name="create_time">
+      <Position>8</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="290" parent="239" name="repair_address">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="291" parent="239" name="image_url">
+      <Position>10</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="292" parent="239" name="end_time">
+      <Position>11</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="293" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="289" parent="240" name="id">
+    <column id="294" parent="240" name="id">
       <Position>1</Position>
       <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="290" parent="240" name="login_id">
+    <column id="295" parent="240" name="login_id">
       <Position>2</Position>
       <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="240" name="number">
+    <column id="296" parent="240" name="number">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="292" parent="240" name="name">
+    <column id="297" parent="240" name="name">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="240" name="department">
+    <column id="298" parent="240" name="department">
       <Position>5</Position>
       <Comment>系别</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="240" name="student_class">
+    <column id="299" parent="240" name="student_class">
       <Position>6</Position>
       <Comment>班级</Comment>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="295" parent="240" name="tb_student_number_uindex">
+    <index id="300" parent="240" name="tb_student_number_uindex">
       <ColNames>number</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="296" parent="240" name="tb_student_tb_login_id_fk">
+    <index id="301" parent="240" name="tb_student_tb_login_id_fk">
       <ColNames>login_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="297" parent="240" name="PRIMARY">
+    <key id="302" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="298" parent="240" name="tb_student_number_uindex">
+    <key id="303" parent="240" name="tb_student_number_uindex">
       <ColNames>number</ColNames>
       <UnderlyingIndexName>tb_student_number_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="299" parent="240" name="tb_student_tb_login_id_fk">
+    <foreign-key id="304" parent="240" name="tb_student_tb_login_id_fk">
       <ColNames>login_id</ColNames>
       <RefSchemaName>repairs</RefSchemaName>
       <RefTableName>tb_login</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="300" parent="241" name="id">
+    <column id="305" parent="241" name="id">
       <Position>1</Position>
       <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="301" parent="241" name="login_id">
+    <column id="306" parent="241" name="title">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="307" parent="241" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <DefaultExpression>&apos;系统管理员&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="308" parent="241" name="content">
+      <Position>4</Position>
+      <DataType>varchar(2048)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="309" parent="241" name="create_time">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="310" parent="241" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="311" parent="242" name="id">
+      <Position>1</Position>
+      <DataType>int(5)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="312" parent="242" name="login_id">
       <Position>2</Position>
       <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="302" parent="241" name="name">
+    <column id="313" parent="242" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="303" parent="241" name="department">
+    <column id="314" parent="242" name="department">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="304" parent="241" name="number">
+    <column id="315" parent="242" name="number">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="305" parent="241" name="tb_teacher_number_uindex">
+    <index id="316" parent="242" name="tb_teacher_number_uindex">
       <ColNames>number</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="306" parent="241" name="tb_teacher_tb_login_id_fk">
+    <index id="317" parent="242" name="tb_teacher_tb_login_id_fk">
       <ColNames>login_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="307" parent="241" name="PRIMARY">
+    <key id="318" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="308" parent="241" name="tb_teacher_number_uindex">
+    <key id="319" parent="242" name="tb_teacher_number_uindex">
       <ColNames>number</ColNames>
       <UnderlyingIndexName>tb_teacher_number_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="309" parent="241" name="tb_teacher_tb_login_id_fk">
+    <foreign-key id="320" parent="242" name="tb_teacher_tb_login_id_fk">
       <ColNames>login_id</ColNames>
       <RefSchemaName>repairs</RefSchemaName>
       <RefTableName>tb_login</RefTableName>

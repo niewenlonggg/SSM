@@ -1,9 +1,10 @@
 package com.jiefeng.ssm.bean;
 
-public class LaboratoryManager {
+public class Manager extends BaseRole{
+
     private Integer id;
 
-    private Integer loginId;
+    private Login login;
 
     private String name;
 
@@ -17,12 +18,12 @@ public class LaboratoryManager {
         this.id = id;
     }
 
-    public Integer getLoginId() {
-        return loginId;
+    public Login getLogin() {
+        return login;
     }
 
-    public void setLoginId(Integer loginId) {
-        this.loginId = loginId;
+    public void setLogin(Login login) {
+        this.login = login;
     }
 
     public String getName() {
@@ -39,5 +40,15 @@ public class LaboratoryManager {
 
     public void setNumber(String number) {
         this.number = number == null ? null : number.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Manager{" +
+                "id=" + id +
+                ", login=" + login +
+                ", name='" + name + '\'' +
+                ", number='" + number + '\'' +
+                '}';
     }
 }

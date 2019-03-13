@@ -1,30 +1,26 @@
 package com.jiefeng.ssm.dao;
 
 import com.jiefeng.ssm.bean.RepairsTable;
-import com.jiefeng.ssm.bean.Example.RepairsTableExample;
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
-public interface RepairsTableMapper {
-    long countByExample(RepairsTableExample example);
-
-    int deleteByExample(RepairsTableExample example);
-
+public interface RepairsTableMapper{
     int deleteByPrimaryKey(Integer id);
 
     int insert(RepairsTable record);
 
-    int insertSelective(RepairsTable record);
-
-    List<RepairsTable> selectByExample(RepairsTableExample example);
-
     RepairsTable selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") RepairsTable record, @Param("example") RepairsTableExample example);
-
-    int updateByExample(@Param("record") RepairsTable record, @Param("example") RepairsTableExample example);
-
-    int updateByPrimaryKeySelective(RepairsTable record);
+    List<RepairsTable> selectAll();
 
     int updateByPrimaryKey(RepairsTable record);
+
+    List<RepairsTable> getFirstTable();
+
+    List<RepairsTable> selectTableMore();
+
+    List<RepairsTable> selectHistory(RepairsTable repairsTable);
+
+    List<RepairsTable> selectRepairing(RepairsTable repairsTable);
 }

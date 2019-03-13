@@ -1,74 +1,68 @@
 package com.jiefeng.ssm.service.impl;
 
 import com.jiefeng.ssm.bean.Student;
-import com.jiefeng.ssm.bean.Example.StudentExample;
+import com.jiefeng.ssm.dao.LoginMapper;
 import com.jiefeng.ssm.dao.StudentMapper;
 import com.jiefeng.ssm.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("studentService")
+@Service("StudentService")
 public class StudentServiceImpl implements StudentService {
+
 
     @Autowired
     private StudentMapper studentMapper;
 
+    @Autowired
+    private LoginMapper loginMapper;
     /**
-     * 根据学生的id进行删除
-     * @param id
+     * 获取所有的学生
      * @return
      */
     @Override
-    public boolean deleteStudentById(Integer id) {
-        int result = studentMapper.deleteByPrimaryKey(id);
-        if(result <= 0)
-            return false;
-        else
-            return true;
+    public List<Student> getAllStudent() {
+        return studentMapper.selectAll();
     }
 
-    /**
-     * 如果参数为null，那么便会查询出所有的学生
-     * 如果不为空，那么便会将根据example中的条件进行查询
-     * @param studentExample
-     * @return
-     */
     @Override
-    public List<Student> getStudentList(StudentExample studentExample) {
-        List<Student> studentList = studentMapper.selectByExample(studentExample);
+    @Transactional
+    public int updateStudent(Student student) {
+        try{
+            studentMapper.updateByPrimaryKey(student);
+            if(student.getLogin() != null)
+                loginMapper.updateByPrimaryKey(student.getLogin());
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
 
-        return studentList;
+        return 1;
     }
 
-    /**
-     * 根据传入的Student信息进行更新
-     * @param record
-     * @return
-     */
     @Override
-    public boolean UpdateStudentById(Student record) {
+    @Transactional
+    public int insertStudent(Student student) {
 
-        int result = studentMapper.updateByPrimaryKeySelective(record);
-        if(result <= 0)
-            return false;
-        else
-            return true;
+        int insert = loginMapper.insert(student.getLogin());
+        if(insert == 1){
+            int insert1 = studentMapper.insert(student);
+            if(insert1 == 1){
+                return 1;
+            }else{
+                throw new RuntimeException();
+            }
+        }
+       return 0;
     }
 
-    /**\
-     * 将学生信息添加到数据库中
-     * @param record
-     * @return
-     */
     @Override
-    public boolean addStudent(Student record) {
-        int result = studentMapper.insertSelective(record);
-        if(result <= 0)
-            return false;
-        else
-            return true;
+    public int deleteStudent(Integer id) {
+        return studentMapper.deleteByPrimaryKey(id);
     }
-    
+
+
 }

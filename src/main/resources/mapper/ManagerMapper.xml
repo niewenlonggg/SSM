@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jiefeng.ssm.dao.RepairsPeopleMapper">
-  <resultMap id="BaseResultMap" type="com.jiefeng.ssm.bean.RepairsPeople">
+<mapper namespace="com.jiefeng.ssm.dao.ManagerMapper">
+  <resultMap id="BaseResultMap" type="com.jiefeng.ssm.bean.Manager">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="number" jdbcType="VARCHAR" property="number" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
     <association property="login" select="com.jiefeng.ssm.dao.LoginMapper.selectByPrimaryKey" column="login_id">
     </association>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tb_repairs_people
+    delete from tb_manager
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jiefeng.ssm.bean.RepairsPeople">
-    insert into tb_repairs_people (id, login_id, name, 
-      number, address, phone
-      )
+  <insert id="insert" parameterType="com.jiefeng.ssm.bean.Manager">
+    insert into tb_manager (id, login_id, name, 
+      number)
     values (#{id,jdbcType=INTEGER}, #{login.id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
-      #{number,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}
-      )
+      #{number,jdbcType=VARCHAR})
   </insert>
 
-  <update id="updateByPrimaryKey" parameterType="com.jiefeng.ssm.bean.RepairsPeople">
-    update tb_repairs_people
+  <update id="updateByPrimaryKey" parameterType="com.jiefeng.ssm.bean.Manager">
+    update tb_manager
     <trim prefix="set" suffixOverrides=",">
       <if test="login != null">
         login_id = #{login.id},
@@ -35,27 +31,25 @@
       <if test="number != null and number != ''">
         number = #{number},
       </if>
-      <if test="address != null and address != ''">
-        address = #{address},
-      </if>
-      <if test="phone != null and phone != ''">
-        phone = #{phone}
-      </if>
     </trim>
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, login_id, name, number, address, phone
-    from tb_repairs_people
+    select id, login_id, name, number
+    from tb_manager
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, login_id, name, number, address, phone
-    from tb_repairs_people
+    select id, login_id, name, number
+    from tb_manager
   </select>
 
-  <select id="getInfoByLoginId" resultType="repairsPeople">
-    select * from tb_repairs_people where login_id = #{id}
+
+  <select id="getInfoByLoginId" resultType="manager">
+    select * from tb_manager where login_id = #{id}
   </select>
 </mapper>

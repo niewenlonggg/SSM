@@ -1,30 +1,18 @@
 package com.jiefeng.ssm.dao;
 
 import com.jiefeng.ssm.bean.Teacher;
-import com.jiefeng.ssm.bean.Example.TeacherExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
-public interface TeacherMapper {
-    long countByExample(TeacherExample example);
-
-    int deleteByExample(TeacherExample example);
-
+public interface TeacherMapper extends BaseMapper{
     int deleteByPrimaryKey(Integer id);
 
     int insert(Teacher record);
 
-    int insertSelective(Teacher record);
-
-    List<Teacher> selectByExample(TeacherExample example);
-
     Teacher selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") Teacher record, @Param("example") TeacherExample example);
-
-    int updateByExample(@Param("record") Teacher record, @Param("example") TeacherExample example);
-
-    int updateByPrimaryKeySelective(Teacher record);
+    List<Teacher> selectAll();
 
     int updateByPrimaryKey(Teacher record);
+
+    Teacher getInfoByLoginId(Integer loginId);
 }

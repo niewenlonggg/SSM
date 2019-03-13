@@ -8,7 +8,7 @@
     <!--引入外部mysql配置文件-->
     <properties resource="db-config.properties"/>
 
-    <context id="DB2Tables" targetRuntime="MyBatis3">
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple">
         <!-- 为了防止生成的代码中有很多注释，比较难看，加入下面的配置控制 -->
         <commentGenerator>
             <property name="suppressAllComments" value="true" />
@@ -44,7 +44,14 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="tb_manager" domainObjectName="LaboratoryManager"/>
+        <!--<table tableName="tb_login" domainObjectName="Login"/>-->
+        <!--<table tableName="tb_manager" domainObjectName="Manager"/>-->
+        <!--<table tableName="tb_repairs_image" domainObjectName="RepairsImage"/>-->
+        <!--<table tableName="tb_repairs_people" domainObjectName="RepairsPeople"/>-->
+        <!--<table tableName="tb_repairs_table" domainObjectName="RepairsTable"/>-->
+        <!--<table tableName="tb_student" domainObjectName="Student"/>-->
+        <table tableName="tb_system_notice" domainObjectName="Notice"/>
+        <!--<table tableName="tb_teacher" domainObjectName="Teacher"/>-->
 
 
     </context>

@@ -2,32 +2,32 @@ package com.jiefeng.ssm.dao;
 
 import com.jiefeng.ssm.bean.BaseRole;
 import com.jiefeng.ssm.bean.Login;
-import com.jiefeng.ssm.bean.Example.LoginExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface LoginMapper {
-    long countByExample(LoginExample example);
-
-    int deleteByExample(LoginExample example);
-
     int deleteByPrimaryKey(Integer id);
 
     int insert(Login record);
 
-    int insertSelective(Login record);
-
-    List<Login> selectByExample(LoginExample example);
-
     Login selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") Login record, @Param("example") LoginExample example);
-
-    int updateByExample(@Param("record") Login record, @Param("example") LoginExample example);
-
-    int updateByPrimaryKeySelective(Login record);
+    List<Login> selectAll();
 
     int updateByPrimaryKey(Login record);
 
+    /**
+     * 根据用户名查询用户信息
+     * @param record
+     * @return
+     */
+    Login selectByUsername(Login record);
 
+    /**
+     * 获取
+     * @param loginId
+     * @return
+     */
+    BaseRole getUserInfo(@Param("role") Integer role, @Param("loginId") Integer loginId);
 }

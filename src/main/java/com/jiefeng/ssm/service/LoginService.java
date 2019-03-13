@@ -6,10 +6,11 @@ import java.util.Map;
 
 public interface LoginService {
 
-    /**
-     * 对登录信息进行验证
-     * @param token
-     * @return
-     */
-    Map<String,Object> validate(Login token, int role);
+    Map<String,Object> adminValidation(Login token);
+
+    Map<String,Object> validation(int role,Login token);
+
+    int deleteLogin(Integer id);
+
+    Map<String,Object> updateAdminPassword(String oldPassword, String newPassword);
 }

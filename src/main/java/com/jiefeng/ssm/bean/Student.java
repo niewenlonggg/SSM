@@ -1,9 +1,9 @@
 package com.jiefeng.ssm.bean;
 
-public class Student extends BaseRole{
+public class Student extends BaseRole {
     private Integer id;
 
-    private Integer loginId;
+    private Login login;
 
     private String number;
 
@@ -21,12 +21,12 @@ public class Student extends BaseRole{
         this.id = id;
     }
 
-    public Integer getLoginId() {
-        return loginId;
+    public Login getLogin() {
+        return login;
     }
 
-    public void setLoginId(Integer loginId) {
-        this.loginId = loginId;
+    public void setLogin(Login login) {
+        this.login = login;
     }
 
     public String getNumber() {
@@ -65,7 +65,7 @@ public class Student extends BaseRole{
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", loginId=" + loginId +
+                ", login=" + login +
                 ", number='" + number + '\'' +
                 ", name='" + name + '\'' +
                 ", department='" + department + '\'' +
