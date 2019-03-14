@@ -11,7 +11,7 @@
       <param-name>contextConfigLocation</param-name>
       <param-value>classpath:spring/spring-*.xml</param-value>
     </init-param>
-    <!--load-on-satrtup表示这个servlet启动时就被加载而且是优先级最高的，如果为负数或0则请求时被加载，默认为0或负数-->
+    <!--load-on-satrtup表示这个servlet启动时就被加载而且是优先级最高的，如果为负数或空则请求时被加载，正数或者0中0是优先级最高的-->
     <load-on-startup>1</load-on-startup>
   </servlet>
 

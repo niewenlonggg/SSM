@@ -63,6 +63,7 @@ public class RepairsTableController {
 
         if(!ValidationUpload.status){
             repairsTableService.clearFailureUpload();
+            System.out.println("status:    " + ValidationUpload.status);
         }
 
         Map<String,Object> modelMap = new HashMap<>();
@@ -80,7 +81,7 @@ public class RepairsTableController {
         logger.info("图片保存相对地址: " + insertImageMap.get("imagePath"));
         int result = repairsTableService.updateRepairsTable(repairsTable);
         if(result == 1){
-            ValidationUpload.status = false;
+            ValidationUpload.status = true;
             ValidationUpload.id = (Integer) insertImageMap.get("repairsTableId");
             ValidationUpload.imagePath = (String)insertImageMap.get("imagePath");
             modelMap.put("success",true);
@@ -243,6 +244,7 @@ public class RepairsTableController {
         Integer id = (Integer) map.get("id");
         RepairsTable repairsTable = new RepairsTable();
         repairsTable.setId(id);
+        repairsTable.setEndTime(new Date());
         repairsTable.setStatus(4);
         int i = repairsTableService.updateRepairsTable(repairsTable);
         if(i <= 0)
