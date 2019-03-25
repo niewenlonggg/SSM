@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiefeng.ssm.dao.ClassDao">
+
+
+    <select id="getAllClass" resultType="tbClass">
+        select * from tb_class
+    </select>
+
+    <insert id="insertClass" parameterType="tbClass">
+        insert into tb_class(name) values(#{name})
+    </insert>
+
+    <delete id="deleteClassById">
+        delete from tb_class where id = #{id}
+    </delete>
+
+    <update id="updateClassByPrimaryKey">
+        update tb_class set name = #{name} where id = #{id}
+    </update>
+
+
+    <select id="getClassByPrimaryKey" resultType="tbClass">
+        select * from tb_class where id = #{id}
+    </select>
+
+</mapper>

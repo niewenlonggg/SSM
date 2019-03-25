@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiefeng.ssm.dao.CommentDao">
+
+    <insert id="insertComment" parameterType="comment">
+        insert into tb_comment(accept_id, content, createTime, test_id) values(#{acceptId.id},#{content},#{createTime},#{testId.id})
+    </insert>
+    
+    <resultMap id="BaseMap" type="comment">
+        <id column="id" property="id"/>
+        <result property="content" column="content"/>
+        <result property="createTime" column="create_time"/>
+        <association property="acceptId" select="com.jiefeng.ssm.dao.UserDao.getUserByPrimaryKey" column="accept_id"/>
+        <association property="testId" select="com.jiefeng.ssm.dao.TestDao.getTestByPrimaryKey" column="test_id"/>
+    </resultMap>
+    
+    
+    <select id="getCommentsByStudentId" resultMap="BaseMap">
+        select * from tb_comment where accept_id = #{id} order by id desc
+    </select>
+
+
+    <delete id="deleteCommentByPrimaryId">
+        delete from tb_comment where id = #{id}
+    </delete>
+    
+    <select id="getAllComment" resultMap="BaseMap">
+        select * from tb_comment order by id desc
+    </select>
+    
+</mapper>

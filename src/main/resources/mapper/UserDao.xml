@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiefeng.ssm.dao.UserDao">
+
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <resultMap id="BaseUser" type="user">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="number" property="number"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="gender" property="gender"/>
+        <result column="type" property="type"/>
+        <association property="classId" select="com.jiefeng.ssm.dao.ClassDao.getClassByPrimaryKey"
+                     column="class_id">
+        </association>
+    </resultMap>
+
+    <select id="getUserByUsername" resultMap="BaseUser">
+        select * from tb_user where username = #{username}
+    </select>
+
+
+    <select id="getUserByPrimaryKey" resultMap="BaseUser">
+        select * from tb_user where id = #{id}
+    </select>
+
+    <select id="getUserByType" resultMap="BaseUser">
+        select * from tb_user where type = #{type}
+    </select>
+
+    <delete id="deleteUserByPrimaryId">
+        delete from tb_user where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="user">
+        update tb_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="number != null and number != ''">
+                number = #{number},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="gender != null ">
+                gender = #{gender},
+            </if>
+            <if test="classId != null and classId.id != null">
+                class_id = #{classId.id},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password}
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <insert id="insertUser" parameterType="user">
+        insert into tb_user(username, password, number, name,gender, type, class_id) values(
+        #{username},#{password},#{number},#{name},#{gender},#{type},#{classId.id})
+    </insert>
+
+
+    <select id="adminValidation" resultType="user">
+        select username,password from tb_user where id = 7;
+    </select>
+
+
+</mapper>

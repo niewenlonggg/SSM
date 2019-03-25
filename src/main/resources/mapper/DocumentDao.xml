@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiefeng.ssm.dao.DocumentDao">
+
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <resultMap id="BaseMap" type="document">
+        <id column="id" property="id"/>
+        <result column="url" property="url"/>
+        <result column="create_time" property="createTime"/>
+        <association property="studentId" select="com.jiefeng.ssm.dao.UserDao.getUserByPrimaryKey" column="student_id"/>
+        <association property="testId" select="com.jiefeng.ssm.dao.TestDao.getTestByPrimaryKey" column="test_id"/>
+    </resultMap>
+    
+    
+    <select id="getAllDocument" resultMap="BaseMap">
+        select * from tb_document order by id desc
+    </select>
+
+    <update id="updateDocumentDate">
+        update tb_document set createTime = #{date} where id = #{id}
+    </update>
+
+    <insert id="insertDocument" parameterType="document">
+        insert into tb_document(url, student_id, test_id, create_time) value(#{url},#{studentId.id},#{testId.id},#{createTime});
+    </insert>
+
+    <select id="getDocumentByStudentIdAndTestId" resultType="document">
+        select id,url from tb_document where test_id = #{testId} and student_id = #{studentId}
+    </select>
+
+    <update id="updateDocumentUrl" parameterType="document">
+        update tb_document set url = #{url} where id = #{id}
+    </update>
+</mapper>

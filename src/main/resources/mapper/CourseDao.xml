@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiefeng.ssm.dao.CourseDao">
+
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <resultMap id="BaseCourse" type="course">
+        <id column="id" property="id"/>
+        <result column="course_name" property="courseName"/>
+        <association property="teacher" select="com.jiefeng.ssm.dao.UserDao.getUserByPrimaryKey" column="teacher_id">
+        </association>
+    </resultMap>
+    
+    
+    <select id="getCourseByPrimaryKey" resultMap="BaseCourse">
+        select * from tb_course where id = #{id}
+    </select>
+
+
+    <select id="getCourseListByTeacherId" resultMap="BaseCourse">
+        select * from tb_course where teacher_id = #{teacherId} order by id desc
+    </select>
+
+    <insert id="insertCourse" parameterType="course">
+        insert into tb_course(course_name,teacher_id) values(#{courseName},#{teacher.id})
+    </insert>
+
+
+    <select id="getAllCourse" resultMap="BaseCourse">
+        select * from tb_course
+    </select>
+</mapper>

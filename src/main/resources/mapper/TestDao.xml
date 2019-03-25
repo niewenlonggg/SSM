@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiefeng.ssm.dao.TestDao">
+
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <resultMap id="BaseTestMap" type="test">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="test_desc" property="testDesc"/>
+        <result column="status" property="status"/>
+        <association property="course" select="com.jiefeng.ssm.dao.CourseDao.getCourseByPrimaryKey" column="course_id"/>
+        <association property="teacherId" select="com.jiefeng.ssm.dao.UserDao.getUserByPrimaryKey" column="teacher_id"/>
+        <collection property="classList" select="com.jiefeng.ssm.dao.TestDao.queryPermissionClass" column="id">
+
+        </collection>
+    </resultMap>
+
+    <select id="getAllTestAdmin" resultMap="BaseTestMap">
+        select * from tb_test order by id desc
+    </select>
+
+    <select id="getAllTest" resultMap="BaseTestMap">
+        select * from tb_test where status = true order by id desc
+    </select>
+
+
+    <!--根据教师的ID查询其对应的实验-->
+    <select id="getTestByPrimaryKey" resultMap="BaseTestMap">
+        select * from tb_test where id = #{id}
+    </select>
+
+    <!--根据教师的ID查询其对应的实验-->
+    <select id="getAllTestByTeacherId" resultMap="BaseTestMap">
+        select * from tb_test where teacher_id = #{id}
+    </select>
+
+    <!--根据教师的ID和课程的id查询其对应的实验-->
+    <select id="getAllTestByTeacherIdAndCourseId" resultMap="BaseTestMap">
+        select * from tb_test where teacher_id = #{teacherId} and course_id = #{courseId}
+    </select>
+
+
+    <!--查询相应实验对那些班级开放权限-->
+    <select id="queryPermissionClass" resultType="java.lang.Integer">
+        select id from tb_class where id in
+(select tc.class_id 权限ID from tb_test t ,tb_test_class tc where t.id = tc.test_id and t.id = #{testId})
+    </select>
+
+
+    <insert id="insertTest" parameterType="test" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_test(title,test_desc,status,teacher_id,course_id) values(#{title},#{testDesc},#{status},#{teacherId.id},#{course.id})
+    </insert>
+
+    <update id="updateTest" parameterType="test">
+        update tb_test
+        <trim prefix="set" suffixOverrides=",">
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="testDesc != null and testDesc != ''">
+                test_desc = #{testDesc},
+            </if>
+            <if test="status != null">
+                status = #{status}
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTestByPrimaryKey" parameterType="java.lang.Integer">
+        delete from tb_test_class where id = #{id}
+    </delete>
+</mapper>

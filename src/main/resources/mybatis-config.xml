@@ -13,6 +13,11 @@
 
         <!--Log4j2-->
         <setting name="logImpl" value="LOG4J2" />
+
+        <!--开启懒加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+
     </settings>
 
     <!--开启别名-->
