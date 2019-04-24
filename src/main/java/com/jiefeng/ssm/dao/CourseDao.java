@@ -33,4 +33,10 @@ public interface CourseDao {
      * @return
      */
     List<Course> getAllCourse();
+
+    /**
+     * 删除课程
+     * @return
+     */
+    boolean deleteCourseByPrimaryId(Integer id);
 }

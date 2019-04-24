@@ -69,8 +69,16 @@
 
 
     <select id="adminValidation" resultType="user">
-        select username,password from tb_user where id = 7;
+        select username,password from tb_user where id = 1;
     </select>
 
+
+    <update id="changeAdminPassword" parameterType="java.lang.String">
+        update tb_user set
+        <if test="_parameter != null and _parameter != ''">
+            password = #{password}
+        </if>
+        where id = 1
+    </update>
 
 </mapper>

@@ -38,4 +38,10 @@ public interface UserDao {
 
     User adminValidation();
 
+    /**
+     * 更改管理员密码
+     *
+     */
+    boolean changeAdminPassword(String password);
+
 }

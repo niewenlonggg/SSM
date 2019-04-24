@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -121,4 +122,11 @@ public class TestController  {
             modelMap.put("success", false);
         return modelMap;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/uploadVideo",method = RequestMethod.POST)
+    public boolean uploadVideo(HttpServletRequest request){
+        return testService.uploadVideo(request);
+    }
+
 }

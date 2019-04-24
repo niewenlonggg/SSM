@@ -74,4 +74,11 @@
     <delete id="deleteTestByPrimaryKey" parameterType="java.lang.Integer">
         delete from tb_test_class where id = #{id}
     </delete>
+
+
+    <update id="updateVideoUrl" parameterType="test">
+        update tb_test set video_url = #{videoUrl} where id = #{id}
+    </update>
+
+
 </mapper>

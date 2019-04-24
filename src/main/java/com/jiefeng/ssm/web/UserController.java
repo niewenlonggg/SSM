@@ -73,4 +73,18 @@ public class UserController {
         return b;
     }
 
+    @RequestMapping(value = "/changeAdminPassword",method = RequestMethod.POST)
+    @ResponseBody
+    public boolean changeAdminPassword(@RequestBody Map map){
+
+        String oldPassword = (String) map.get("oldPassword");
+        String newPassword = (String) map.get("newPassword");
+
+        boolean b = userService.changeAdminPassword(oldPassword, newPassword);
+        if(b)
+            return true;
+
+
+        return false;
+    }
 }

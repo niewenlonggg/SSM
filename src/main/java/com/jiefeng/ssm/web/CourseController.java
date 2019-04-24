@@ -25,6 +25,12 @@ public class CourseController {
         return courseService.getCourseListByTeacherId(id);
     }
 
+    @RequestMapping(value = "/deleteCourseByPrimaryId",method = RequestMethod.GET)
+    @ResponseBody
+    private boolean deleteCourseByPrimaryId(@RequestParam("courseId") Integer id){
+        return courseService.deleteCourseByPrimaryId(id);
+    }
+
 
     @RequestMapping(value = "/getAllCourse",method = RequestMethod.GET)
     @ResponseBody
@@ -52,5 +58,8 @@ public class CourseController {
         }
         return false;
     }
+
+
+
 
 }

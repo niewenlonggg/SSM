@@ -4,10 +4,15 @@ import com.jiefeng.ssm.bean.Test;
 import com.jiefeng.ssm.dao.TestClassDao;
 import com.jiefeng.ssm.dao.TestDao;
 import com.jiefeng.ssm.service.TestService;
+import com.jiefeng.ssm.util.ImageUtil;
+import com.jiefeng.ssm.util.PathUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service("TestService")
@@ -79,6 +84,39 @@ public class TestServiceImpl implements TestService {
     @Override
     public List<Test> getAllTestAdmin() {
         return testDao.getAllTestAdmin();
+    }
+
+
+    /**
+     * 上传实验说明视频
+     * @param request
+     * @return
+     */
+    @Override
+    public boolean uploadVideo(HttpServletRequest request) {
+        try{
+            MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+            List<MultipartFile> files = multipartRequest.getFiles("testVideo");
+
+            Integer testId = Integer.parseInt(request.getParameter("testId"));
+            System.out.println(testId);
+
+            String ImageUrl = PathUtil.getTestVideoUrl(testId);
+            String url = ImageUtil.generateNormalImg(files.get(0), ImageUrl);
+
+            Test test = new Test();
+            test.setId(testId);
+            test.setVideoUrl(url);
+
+            boolean b = testDao.updateVideoUrl(test);
+            return b;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        return false;
     }
 
 

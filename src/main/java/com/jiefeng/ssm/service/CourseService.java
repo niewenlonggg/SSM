@@ -13,4 +13,6 @@ public interface CourseService {
     boolean insertCourse(Course course);
 
     List<Course> getAllCourse();
+
+    boolean deleteCourseByPrimaryId(Integer id);
 }

@@ -2,6 +2,7 @@ package com.jiefeng.ssm.service;
 
 import com.jiefeng.ssm.bean.Test;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface TestService {
@@ -15,5 +16,8 @@ public interface TestService {
     List<Test> getAllTest();
 
     List<Test> getAllTestAdmin();
+
+
+    boolean uploadVideo(HttpServletRequest request);
 
 }

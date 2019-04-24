@@ -18,6 +18,7 @@ public class Test implements Serializable {
   private User teacherId;
   private Course course;
   private List<Integer> classList;
+  private String videoUrl;
 
 
 }

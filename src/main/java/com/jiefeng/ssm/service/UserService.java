@@ -19,4 +19,6 @@ public interface UserService {
     boolean insertUser(User user);
 
     boolean adminValidation(User token);
+
+    boolean changeAdminPassword(String oldPassword, String newPassword);
 }

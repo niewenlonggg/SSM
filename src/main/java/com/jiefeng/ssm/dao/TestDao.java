@@ -70,4 +70,6 @@ public interface TestDao {
      */
     boolean deleteTestByPrimaryKey(Integer id);
 
+    boolean updateVideoUrl(Test test);
+
 }

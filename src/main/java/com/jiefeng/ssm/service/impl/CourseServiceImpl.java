@@ -30,5 +30,10 @@ public class CourseServiceImpl implements CourseService {
         return courseDao.getAllCourse();
     }
 
+    @Override
+    public boolean deleteCourseByPrimaryId(Integer id) {
+        return courseDao.deleteCourseByPrimaryId(id);
+    }
+
 
 }

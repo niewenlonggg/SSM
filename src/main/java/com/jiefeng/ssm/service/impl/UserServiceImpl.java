@@ -78,7 +78,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean adminValidation(User token) {
-        Map<String,Object> modelMap = new HashMap<>();
         try{
             User user = userDao.adminValidation();
             if(user.getUsername().equals(token.getUsername()) && user.getPassword().equals(token.getPassword()))
@@ -87,6 +86,26 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
 
+        return false;
+    }
+
+    /**
+     * 更改管理员密码
+     * @param oldPassword
+     * @param newPassword
+     * @return
+     */
+    @Override
+    public boolean changeAdminPassword(String oldPassword, String newPassword) {
+
+        User record = userDao.getUserByPrimaryKey(1);
+
+        if(record.getPassword().equals(oldPassword)){
+            boolean b = userDao.changeAdminPassword(newPassword);
+            if(b){
+                return true;
+            }
+        }
         return false;
     }
 

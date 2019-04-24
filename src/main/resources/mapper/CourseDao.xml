@@ -32,4 +32,8 @@
     <select id="getAllCourse" resultMap="BaseCourse">
         select * from tb_course
     </select>
+
+    <delete id="deleteCourseByPrimaryId">
+        delete from tb_course where id = #{id}
+    </delete>
 </mapper>

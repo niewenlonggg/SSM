@@ -17,10 +17,14 @@ public class PathUtil {
         return basePath;
     }
 
-
     public static String getDocumentImageUrl(Integer documentId){
         String  imagePath = File.separator + documentId + File.separator;
         return imagePath;
+    }
+
+
+    public static String getTestVideoUrl(Integer testId){
+        return File.separator + "upload" + File.separator + "video" + File.separator + testId + File.separator;
     }
 
 }
